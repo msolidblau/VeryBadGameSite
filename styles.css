@@ -1,51 +1,77 @@
+/* Global Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f5f5f5;
     color: #333;
+    animation: fadeIn 1s ease-out; /* Add fade-in animation */
 }
+
 header {
     background-color: #2d2d2d;
     color: white;
     padding: 20px;
     text-align: center;
+    opacity: 0;
+    animation: fadeIn 2s ease-out forwards; /* Fade-in animation for header */
 }
+
 header h1 {
     margin: 0;
 }
+
 .section {
     padding: 50px 20px;
     text-align: center;
+    opacity: 0;
+    animation: fadeIn 2s ease-out 0.5s forwards; /* Fade-in with delay for section */
 }
+
+/* Animation for features and screenshots */
 .features, .screenshots {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    gap: 20px; /* Added gap for spacing */
 }
+
 .feature, .screenshot {
     margin: 20px;
     max-width: 300px;
     text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 1s ease-out forwards; /* Animate from bottom */
 }
+
+.feature:nth-child(even), .screenshot:nth-child(even) {
+    animation-delay: 0.5s;
+}
+
+.feature:nth-child(odd), .screenshot:nth-child(odd) {
+    animation-delay: 1s;
+}
+
 .feature h3 {
     margin-top: 10px;
 }
+
+/* Hover effects for screenshots and features */
+.feature:hover, .screenshot:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
 .screenshots img {
     width: 100%;
     max-width: 300px;
     border-radius: 8px;
+    transition: transform 0.3s ease;
 }
-footer {
-    background-color: #2d2d2d;
-    color: white;
-    padding: 10px;
-    text-align: center;
-}
-a {
-    color: #4CAF50;
-    text-decoration: none;
-}
+
+/* Button animations */
 .button {
     background-color: #4CAF50;
     color: white;
@@ -54,7 +80,56 @@ a {
     border-radius: 5px;
     font-size: 18px;
     margin-top: 20px;
+    transition: transform 0.2s ease, background-color 0.2s ease;
 }
+
 .button:hover {
     background-color: #45a049;
+    transform: scale(1.1); /* Slight scale-up on hover */
 }
+
+/* Footer Styling */
+footer {
+    background-color: #2d2d2d;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    opacity: 0;
+    animation: fadeIn 2s ease-out 1.5s forwards; /* Fade-in for footer */
+}
+
+/* Link Styling */
+a {
+    color: #4CAF50;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: #45a049; /* Change link color on hover */
+}
+
+/* Keyframe Animations */
+
+/* Fade-in effect */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Fade-up effect (for features and screenshots) */
+@keyframes fadeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
